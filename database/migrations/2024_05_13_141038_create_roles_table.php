@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->enum('role', ['user', 'admin', 'super-admin']);
+            $table->enum('role', ['user', 'super-admin', 'admin', 'editor', 'author','viewer']);
             $table->timestamps();
         });
     }

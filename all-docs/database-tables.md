@@ -1,3 +1,5 @@
+## Developed By Abdulsalam Amtech
+
 ## Blog Website
 
 content management system (CMS) that relies on MySQL (or MariaDB) as its database management system.
@@ -19,6 +21,7 @@ Below is an overview of the primary tables of the database schema along with the
    - **Description:** Stores users information data. (Belongs to user)
    - **Key Fields:**
      - `ID` (Primary Key)
+     - `user_id`
      - `first_name`
      - `last_name`
      - `location`
@@ -29,8 +32,15 @@ Below is an overview of the primary tables of the database schema along with the
    - **Description:** Stores roles data.
    - **Key Fields:**
      - `ID` (Primary Key)
-     - `name`
+     - `name` Enum('user', 'super-admin', 'admin', 'editor', 'author','viewer')
      - `status`
+
+     'user' - view posts and manage their comments
+     'super-admin' - manage the entire website
+     'admin', - manage other users
+     'editor' - manage posts
+     'author', - mange their own post
+     'viewer' - inspection only
 
 5. **user_roles**
    - **Description:** Stores roles related to a user data. (Many to Many)
@@ -115,5 +125,7 @@ Below is an overview of the primary tables of the database schema along with the
    - **Description:** Stores subscribers data. (Belongs to post, user)
    - **Key Fields:**
      - `ID` (Primary Key)
-     - `email`
+     - `email` Index
+     - `active` Bool(true, false : if the user email is active)
+
      
