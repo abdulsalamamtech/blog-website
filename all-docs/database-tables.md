@@ -35,10 +35,10 @@ Below is an overview of the primary tables of the database schema along with the
      - `name` Enum('user', 'super-admin', 'admin', 'editor', 'author','viewer')
      - `status`
 
-    - 'user' - view posts and manage their comments
+    - 'user' - view posts and manage their own comments
     - 'super-admin' - manage the entire website
     - 'admin', - manage other users
-    - 'editor' - manage posts
+    - 'editor' - manage entire posts
     - 'author', - mange their own post
     - 'viewer' - inspection only
 
