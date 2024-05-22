@@ -35,12 +35,12 @@ Below is an overview of the primary tables of the database schema along with the
      - `name` Enum('user', 'super-admin', 'admin', 'editor', 'author','viewer')
      - `status`
 
-     'user' - view posts and manage their comments
-     'super-admin' - manage the entire website
-     'admin', - manage other users
-     'editor' - manage posts
-     'author', - mange their own post
-     'viewer' - inspection only
+    - 'user' - view posts and manage their comments
+    - 'super-admin' - manage the entire website
+    - 'admin', - manage other users
+    - 'editor' - manage posts
+    - 'author', - mange their own post
+    - 'viewer' - inspection only
 
 5. **user_roles**
    - **Description:** Stores roles related to a user data. (Many to Many)
