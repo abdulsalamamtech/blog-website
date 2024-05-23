@@ -50,25 +50,58 @@ class User extends Authenticatable
         ];
     }
 
+    // Get all users with specific role
     public function scopeWhereRole($query, $role){
         return $query->whereHas('roles', function($q) use ($role) {
             $q->where('role', $role);
         });
     }
 
+    // check if user has a specific role
     public function roleHas($roleName)
     {
         if($roleName == 'user'){ return true;}
         return $this->roles()->where('role', $roleName)->exists();
     }
 
+    // Get user roles
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class, 'user_roles');
     }
 
+    // Any one
     public function notes(): HasMany
     {
         return $this->hasMany(Note::class);
     }
+
+
+    // Users
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'user_id', 'id');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class, 'user-id', 'id');
+    }
+
+    // Admin
+    public function categories()
+    {
+        return $this->hasMany(Category::class, 'created_by', 'id');
+    }
+
+    public function tags()
+    {
+        return $this->hasMany(Tag::class, 'created_by', 'id');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'created_by', 'id');
+    }
+
 }
