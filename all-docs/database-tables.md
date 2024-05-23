@@ -17,19 +17,7 @@ Below is an overview of the primary tables of the database schema along with the
      - `password` (hashed password)
      - `status`
 
-2. **user_info** (This is optional)
-   - **Description:** Stores users information data. (Belongs to user)
-   - **Key Fields:**
-     - `ID` (Primary Key)
-     - `user_id`
-     - `image_id` (for user profile)
-     - `first_name`
-     - `last_name`
-     - `locaaddress`
-     - `country`
-     - `status`
-
-3. **roles**
+2. **roles**
    - **Description:** Stores roles data.
    - **Key Fields:**
      - `ID` (Primary Key)
@@ -43,12 +31,38 @@ Below is an overview of the primary tables of the database schema along with the
     - 'author', - mange their own post
     - 'viewer' - inspection only
 
-5. **user_roles**
+3. **user_roles**
    - **Description:** Stores roles related to a user data. (Many to Many)
    - **Key Fields:**
      - `ID` (Primary Key)
      - `user_id`
      - `role_id`
+
+4. **images**
+   - **Description:** Stores image data. (Belongs to posts)
+   - **Key Fields:**
+     - `ID` (Primary Key)
+     - `path` Nullable if url exist
+     - `file_id`Nullable
+     - `url` Nullable if path exist
+     - `size` Nullable
+     - `hosted_at` (AWS S3, Cloudinary, ImageInk)
+     - `active` 
+
+5. **user_infos** (This is optional)
+   - **Description:** Stores users information data. (Belongs to user)
+   - **Key Fields:**
+     - `ID` (Primary Key)
+     - `user_id`
+     - `image_id` (for user profile)
+     - `first_name`
+     - `last_name`
+     - `phone_number`
+     - `address`
+     - `lga`
+     - `state`
+     - `country`
+     - `active`
 
 6. **categories**
    - **Description:** Stores categories data. (Belongs to posts)
@@ -57,6 +71,7 @@ Below is an overview of the primary tables of the database schema along with the
      - `created_by` (User that created the category)
      - `name`
      - `slug` Unique, Index
+     - `active`
 
 7. **tags**
    - **Description:** Stores tags data. (Belongs to posts)
@@ -65,18 +80,8 @@ Below is an overview of the primary tables of the database schema along with the
      - `created_by` (User that created the tag)
      - `name`
      - `slug` Unique, Index
+     - `active`
 
-8. **images**
-   - **Description:** Stores image data. (Belongs to posts)
-   - **Key Fields:**
-     - `ID` (Primary Key)
-     - `created_by` (User that created the image)
-     - `path` Nullable if url exist
-     - `file_id`Nullable
-     - `url` Nullable if path exist
-     - `size` Nullable
-     - `hosted_at` (AWS S3, Cloudinary, ImageInk)
-     - `active` 
 
 9. **posts**
    - **Description:** Stores post data. (Belongs to user, Has: categories, tags, comments)
@@ -99,7 +104,7 @@ Below is an overview of the primary tables of the database schema along with the
      - `post_id`
      - `parent_comment_id`
      - `content`
-     - `active` Bool(true, false : if the comment is approved)
+     - `active` Bool(true, false : if the comment is approved) Defalt is false
 
 
 11. **post_categories**
