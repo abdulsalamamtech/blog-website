@@ -25,7 +25,7 @@ Below is an overview of the primary tables of the database schema along with the
      - `image_id` (for user profile)
      - `first_name`
      - `last_name`
-     - `locaaddresstion`
+     - `locaaddress`
      - `country`
      - `status`
 
@@ -33,7 +33,7 @@ Below is an overview of the primary tables of the database schema along with the
    - **Description:** Stores roles data.
    - **Key Fields:**
      - `ID` (Primary Key)
-     - `name` Enum('user', 'super-admin', 'admin', 'editor', 'author','viewer')
+     - `role` Enum('user', 'super-admin', 'admin', 'editor', 'author','viewer')
      - `status`
 
     - 'user' - view posts and manage their own comments
