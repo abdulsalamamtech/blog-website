@@ -17,7 +17,12 @@ class ImageFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'path' => fake()->image(),
+            'file_id' => fake()->numberBetween(1234567890, 9876543210),
+            'url' => fake()->imageUrl(),
+            'size' => fake()->numberBetween(1234, 9876),
+            'hosted_at' => fake()->randomElement(['AWS-S3', 'Cloudinary', 'ImageInk']),
+            'active' => fake()->boolean(true),
         ];
     }
 }

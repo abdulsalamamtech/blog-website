@@ -17,7 +17,8 @@ class SubscriberFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'email' => fake()->unique()->safeEmail(),
+            'active' => fake()->boolean(true),
         ];
     }
 }
