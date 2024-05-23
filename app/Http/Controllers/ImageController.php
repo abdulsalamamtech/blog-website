@@ -13,7 +13,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $images = Image::paginate();
+        return $images;
     }
 
     /**
@@ -21,7 +22,7 @@ class ImageController extends Controller
      */
     public function store(StoreImageRequest $request)
     {
-        //
+        $image = Image::create($request->all());
     }
 
     /**
@@ -29,7 +30,7 @@ class ImageController extends Controller
      */
     public function show(Image $image)
     {
-        //
+        return $image;
     }
 
     /**
@@ -37,7 +38,8 @@ class ImageController extends Controller
      */
     public function update(UpdateImageRequest $request, Image $image)
     {
-        //
+        $image->update($request->all());
+        return $image;
     }
 
     /**
@@ -45,6 +47,7 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
-        //
+        $image->delete();
+        return ['image deleted'];
     }
 }

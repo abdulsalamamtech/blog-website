@@ -13,7 +13,8 @@ class SubscriberController extends Controller
      */
     public function index()
     {
-        //
+        $subscribers = Subscriber::paginate();
+        return $subscribers;
     }
 
     /**
@@ -21,7 +22,8 @@ class SubscriberController extends Controller
      */
     public function store(StoreSubscriberRequest $request)
     {
-        //
+        $subscriber = Subscriber::create($request->all());
+        return $subscriber;
     }
 
     /**
@@ -29,7 +31,7 @@ class SubscriberController extends Controller
      */
     public function show(Subscriber $subscriber)
     {
-        //
+        return $subscriber;
     }
 
     /**
@@ -37,7 +39,8 @@ class SubscriberController extends Controller
      */
     public function update(UpdateSubscriberRequest $request, Subscriber $subscriber)
     {
-        //
+        $subscriber->update($request->all());
+        return $subscriber;
     }
 
     /**
@@ -45,6 +48,7 @@ class SubscriberController extends Controller
      */
     public function destroy(Subscriber $subscriber)
     {
-        //
+        $subscriber->delete();
+        return ['subscriber deleted'];
     }
 }

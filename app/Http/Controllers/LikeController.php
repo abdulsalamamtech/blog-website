@@ -13,7 +13,8 @@ class LikeController extends Controller
      */
     public function index()
     {
-        //
+        $likes = Like::paginate();
+        return $likes;
     }
 
     /**
@@ -21,7 +22,8 @@ class LikeController extends Controller
      */
     public function store(StoreLikeRequest $request)
     {
-        //
+        $like = Like::create($request->all());
+        return $like;
     }
 
     /**
@@ -29,7 +31,7 @@ class LikeController extends Controller
      */
     public function show(Like $like)
     {
-        //
+        return $like;
     }
 
     /**
@@ -37,7 +39,8 @@ class LikeController extends Controller
      */
     public function update(UpdateLikeRequest $request, Like $like)
     {
-        //
+        $like->update($request->all());
+        return $like;
     }
 
     /**
@@ -45,6 +48,7 @@ class LikeController extends Controller
      */
     public function destroy(Like $like)
     {
-        //
+        $like->delete();
+        return ['like deleted'];
     }
 }

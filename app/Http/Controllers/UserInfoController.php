@@ -13,7 +13,8 @@ class UserInfoController extends Controller
      */
     public function index()
     {
-        //
+        $userInfo = UserInfo::paginate();
+        return $userInfo;
     }
 
     /**
@@ -21,7 +22,8 @@ class UserInfoController extends Controller
      */
     public function store(StoreUserInfoRequest $request)
     {
-        //
+        $userInfo = UserInfo::create($request->all());
+        return $userInfo;
     }
 
     /**
@@ -29,7 +31,7 @@ class UserInfoController extends Controller
      */
     public function show(UserInfo $userInfo)
     {
-        //
+        return $userInfo;
     }
 
     /**
@@ -37,7 +39,8 @@ class UserInfoController extends Controller
      */
     public function update(UpdateUserInfoRequest $request, UserInfo $userInfo)
     {
-        //
+        $userInfo->update($request->all());
+        return $userInfo;
     }
 
     /**
@@ -45,6 +48,7 @@ class UserInfoController extends Controller
      */
     public function destroy(UserInfo $userInfo)
     {
-        //
+        $userInfo->delete();
+        return ['user info deleted'];
     }
 }
