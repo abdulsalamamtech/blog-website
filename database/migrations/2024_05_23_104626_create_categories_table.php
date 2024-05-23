@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('created_by')->constrained('users')->cascadeOnDelete()->nullable();
+            $table->foreignId('created_by')->nullable()->constrained('users')->cascadeOnDelete();
             $table->string('name');
             $table->string('slug');
             $table->boolean('active')->default(true);
