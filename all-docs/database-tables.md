@@ -22,7 +22,6 @@ Below is an overview of the primary tables of the database schema along with the
    - **Key Fields:**
      - `ID` (Primary Key)
      - `role` Enum('user', 'super-admin', 'admin', 'editor', 'author','viewer')
-     - `status`
 
     - 'user' - view posts and manage their own comments
     - 'super-admin' - manage the entire website
@@ -92,6 +91,7 @@ Below is an overview of the primary tables of the database schema along with the
      - `title`
      - `slug` Unique, Index
      - `content`
+     - `views` (The numbers of views for this post)
      - `published_at` only when the status is published
      - `status` Enum('draft', 'published', 'archived') Default 'draft'
      - `active` Bool(true, false : if the post is approved)
